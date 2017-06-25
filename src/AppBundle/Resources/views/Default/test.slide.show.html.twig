@@ -1,0 +1,134 @@
+
+
+
+{#{% for i in img %}
+    {% if loop.index0%1 == 0 %}
+        {% if     loop.index0 >0 %}
+        </div>
+    {% endif%}
+
+    {% if loop.index0 == 0 %}
+        <div id="1">
+        {% else %}
+            <div id="2">
+            {% endif%}
+        {% endif%}
+        <img  src="{{asset("files/") ~ i.ext}}" alt="...">
+
+    {% endfor %}
+</div>#}
+
+
+<div class="carousel-inner" role="listbox">
+
+
+
+    {% for i in img %}
+        {% if loop.index0%1 == 0 %}
+            {% if     loop.index0 >0 %}
+            </div>
+        {% endif%}
+
+        {% if loop.index0 == 0 %}
+            <div class="item active">
+
+
+
+            {% else %}
+                <div class="item">
+                {% endif%}
+            {% endif%}
+            <img  src="{{asset("files/") ~ i.ext}}" alt="...">
+            <div class="carousel-caption car-re-posn">
+                <h3>AirMax</h3>
+                <h4>You feel to fall</h4>
+                <span class="color-bar"></span>
+            </div>
+
+        {% endfor %}
+    </div>
+
+
+
+</div>
+
+
+
+
+
+{#<div class="carousel-inner" role="listbox">
+
+
+
+
+    <div class="item active">
+
+
+
+        <img  src="/files/shoe1.jpg" alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+
+    </div>
+
+    <div class="item">
+        <img  src="/files/shoe2.jpg" alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+
+    </div>
+
+    <div class="item">
+        <img  src="/files/shoe3.jpg" alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+
+    </div>
+
+
+
+</div>#}
+
+
+
+
+
+
+
+
+<{#!-- Wrapper for slides -->
+<div class="carousel-inner" role="listbox">
+    <div class="item active">
+        <img src={{asset("./images/shoe3.jpg")}} alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+    </div>
+    <div class="item">
+        <img src={{asset("./images/shoe1.jpg")}} alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+    </div>
+    <div class="item">
+        <img src={{asset("./images/shoe2.jpg")}} alt="...">
+        <div class="carousel-caption car-re-posn">
+            <h3>AirMax</h3>
+            <h4>You feel to fall</h4>
+            <span class="color-bar"></span>
+        </div>
+    </div>
+</div>#}

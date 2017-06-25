@@ -1,0 +1,58 @@
+{% extends 'admin/base.html.twig' %}
+
+
+
+{% block body %}
+    <div class="blank">
+        <h2>Products list</h2>
+        <div class="blankpage-main">
+
+            <tbody>
+            <ul>
+                {% for c in categoryAttribute %}
+
+                    <div class="col-md-3 product-grid">
+                        <div class="product-items">
+                            <div class="project-eff">
+                                <div id="nivo-lightbox-demo"> <p> <span class="rollover1"> </span> </p></div>     
+                            </div>
+                            <div class="produ-cost">
+                                <h4> {{ c.name }}</h4>
+
+
+
+                                {#   <div class="horizontal-tab">
+                                       <ul class="nav nav-tabs">
+                                           <li class=""><a href="{{ path('product_categoryattribute_show', { 'id':c.id })}}"  data-toggle="tab" aria-expanded="false"> <span style="color: white">Show</span></a></li>
+                                           <li class=""><a href="{{ path('product_categoryattribute_edit', { 'id': c.id }) }}" data-toggle="tab" aria-expanded="false"> <span style="color: white">Edit</span></a></li>
+                                           <li class=""><a href="{{ path('product_categoryattribute_delete', { 'id': c.id }) }}" data-toggle="tab" aria-expanded="false"> <span style="color: white">Delete</span></a></li>
+   
+                                       </ul>#}
+                                <a href="{{ path('product_categoryattribute_show', { 'id':c.id })}}" style="color: white">Show</a>
+                                <span style="color: white"> - </span>
+                                <a href="{{ path('product_categoryattribute_edit', { 'id': c.id }) }}" style="color: white">Edit</a>
+                                <span style="color: white"> - </span>
+                                <a href="{{ path('product_categoryattribute_delete', { 'id': c.id }) }}" style="color: white">Delete</a>
+                                {#      </div> #}
+
+                            </div>
+                        </div>
+                    </div>
+                {% else %} 
+                    There is no product to show 
+                {% endfor %} 
+
+                </tbody>
+                <ul>
+                    <li>
+                        <a href="{{ path('product_categoryattribute_new') }}">Create a new product</a>
+                    </li>
+                </ul>
+        </div>  
+        <div class="navigation">
+            {{ knp_pagination_render(categoryAttribute) }}
+        </div>
+    </div>
+
+
+{% endblock %}

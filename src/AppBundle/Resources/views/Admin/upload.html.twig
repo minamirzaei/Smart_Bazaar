@@ -1,0 +1,56 @@
+{% extends "::base.html.twig" %}
+
+{% block stylesheets %}
+    {{parent()}}
+
+
+    <link href="{{asset("/fine-uploader/fine-uploader-gallery.css")}}" rel="stylesheet">
+
+
+{% endblock %}
+
+{% block javascripts %}
+    {{parent()}}
+    <script src="{{asset("js/fine-uploader.js")}}"></script>
+
+
+    <!-- Fine Uploader Gallery template
+    ====================================================================== -->
+    <script type="text/template" id="qq-template-gallery">
+        {% include 'AppBundle:Admin:fine-uploader-template.html.twig' %}
+    </script>
+
+
+    <!-- Fine Uploader DOM Element
+    ====================================================================== -->
+
+
+    <!-- Your code to create an instance of Fine Uploader and bind to the DOM/template
+    ====================================================================== -->
+    <script>
+        var galleryUploader = new qq.FineUploader({
+            element: document.getElementById("fine-uploader-gallery"),
+            template: 'qq-template-gallery',
+            request: {
+                endpoint: '/admin/uploader/{{key}}'
+            },
+            thumbnails: {
+                placeholders: {
+                    waitingPath: '/fine-uploader/placeholders/waiting-generic.png',
+                    notAvailablePath: '/fine-uploader/placeholders/not_available-generic.png'
+                }
+            },
+            validation: {
+                allowedExtensions: ['jpeg', 'jpg', 'gif', 'png', 'pdf', 'mp4', 'zip', 'mp3']
+            }
+
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Welcome to the upload page</h1>
+    {{form(form)}}
+    <div id="fine-uploader-gallery"></div>
+
+{% endblock %}

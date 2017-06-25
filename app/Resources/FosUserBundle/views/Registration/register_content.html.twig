@@ -1,0 +1,36 @@
+{% trans_default_domain 'FOSUserBundle' %}
+{#{% trans_default_domain 'FOSUserBundle' %}
+
+{{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+    {{ form_widget(form) }}
+    <div>
+        <input type="submit" value="{{ 'registration.submit'|trans }}" />
+    </div>
+{{ form_end(form) }}
+#}
+
+
+
+<!-- reg-form -->
+<div class="reg-form">
+    <div class="container">
+        <div class="reg">
+            <h3>Register Now</h3>
+            <p>Welcome, please enter the following details to continue.</p>
+            <p>If you have previously registered with us, <a href="#">click here</a></p>
+            {{ form_start(form, {'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': 'fos_user_registration_register'}}) }}
+
+            {{ form_widget(form) }}
+            <div>
+
+                <input type="submit" value="{{ 'registration.submit'|trans }}" />
+            </div>
+            <p class="click">By clicking this button, you are agree to my  <a href="#">Policy Terms and Conditions.</a></p> 
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{{ form_end(form) }}

@@ -1,0 +1,147 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="head-bread">
+        <div class="container">
+            <ol class="breadcrumb">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.hml">Products</a></li>
+                <li class="active">CART</li>
+            </ol>
+        </div>
+    </div>
+    <!-- check-out -->
+
+    <div class="check">
+        <div class="container">	 
+            <div class="col-md-3 cart-total">
+                <a class="continue" href="#">Continue to basket</a>
+                <div class="price-details">
+                    <h3>Price Details</h3>
+                    <span>Total</span>
+                  {% set totalPrice = 0 %}
+                    <span class="total1">{{totalPrice}}</span>
+                    <span>Discount</span>
+                    <span class="total1">10%(Festival Offer)</span>
+                    <span>Delivery Charges</span>
+                    <span class="total1">150.00</span>
+                    <div class="clearfix"></div>				 
+                </div>
+                <hr class="featurette-divider">
+                <ul class="total_price">
+                    <li class="last_price"> <h4>TOTAL</h4></li>	
+                    <li class="last_price"><span>{{totalPrice}}</span></li>
+                    <div class="clearfix"> </div>
+                </ul> 
+                <div class="clearfix"></div>
+                <a class="order" href="#">Place Order</a>
+            </div>
+            <div class="col-md-9 cart-items">
+
+                {#  **********************numbers of shopping bag**************************************#}
+
+                <h1>My Shopping Bag ({{cart|length}})</h1>
+                {#  *********************************************************************************#}
+
+                <script>$(document).ready(function (c) {
+                        $('.close1').on('click', function (c) {
+                            $('.cart-header').fadeOut('slow', function (c) {
+                                $('.cart-header').remove();
+                            });
+                        });
+                    });
+                </script>
+                <div class="cart-header">
+                    <div class="close1"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                    <div class="cart-sec simpleCart_shelfItem">
+                        <div class="cart-item cyc">
+
+
+                            <img src="{{asset("images/grid8.jpg")}}" class="img-responsive" alt=""/>
+                        </div>
+                        <div class="cart-item-info">
+                            <ul class="qty">
+
+                                {#    ***********************shopping bag*********************************************#}
+                                {% set totalPrice = 0 %}
+                                {% for product in order %}
+                                    {{product.id}}
+                                    {{product.name}}
+                                    {{product.price}}
+                                    (
+                                    {{product.count}}
+                                    {% if product.count < product.quantity %}
+                                        <a href="{{path("cart_add_count",{id: product.id})}}">+</a>
+                                    {% else %}
+                                        +
+                                    {% endif %}
+                                    /
+                                    {% if product.count > 0 %}
+                                        <a href="{{path("cart_reduce_count",{id: product.id})}}">-</a> 
+                                    {% else %}
+                                        -
+                                    {% endif %}
+                                    )
+                                    {{product.count * product.price}}$
+                                    {% set totalPrice = totalPrice + (product.count * product.price) %}
+                                    <br>
+                                {% endfor %}
+                                Total Price:{{totalPrice|number_format}}$
+                                <br>
+                                {% if app.user %}
+                                    <a href={{path("cart_order_db")}}>Final approval</a>
+                                {% else %}
+                                    <a  href="{{path("fos_user_security_login")}}">To Final approval</a>
+                                {% endif %}
+                                <hr>
+
+                                {#    ***********************end of shopping bag*********************************************#}
+
+                                <li><p>Size : 9 US</p></li>
+                                    <li><p>Qty : 1</p></li>
+                                    <li><p>Price each : $190</p></li>
+                            </ul>
+                            <div class="delivery">
+                                <p>Service Charges : Rs.190.00</p>
+                                <span>Delivered in 2-3 bussiness days</span>
+                                <div class="clearfix"></div>
+                            </div>	
+                        </div>
+                        <div class="clearfix"></div>
+
+                    </div>
+                </div>
+                <script>$(document).ready(function (c) {
+                        $('.close2').on('click', function (c) {
+                            $('.cart-header2').fadeOut('slow', function (c) {
+                                $('.cart-header2').remove();
+                            });
+                        });
+                    });
+                </script>
+                <div class="cart-header2">
+                    <div class="close2"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></div>
+                    <div class="cart-sec simpleCart_shelfItem">
+                        <div class="cart-item cyc">
+                            <img src="{{asset("images/grid7.jpg")}}" class="img-responsive" alt=""/>
+                        </div>
+                        <div class="cart-item-info">
+                            <ul class="qty">
+                                <li><p>Size : 8 US</p></li>
+                                <li><p>Qty : 2</p></li>
+                                <li><p>Price each : $190</p></li>
+                            </ul>
+                            <div class="delivery">
+                                <p>Service Charges : Rs.360.00</p>
+                                <span>Delivered in 2-3 bussiness days</span>
+                                <div class="clearfix"></div>
+                            </div>	
+                        </div>
+                        <div class="clearfix"></div>					
+                    </div>
+                </div>			
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+{% endblock %}

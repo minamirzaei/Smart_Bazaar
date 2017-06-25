@@ -1,0 +1,62 @@
+
+
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{% if error %}
+    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+{% endif %}
+{#
+<form action="{{ path("fos_user_security_check") }}" method="post">
+    {% if csrf_token %}
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+    {% endif %}
+
+    <label for="username">{{ 'security.login.username'|trans }}</label>
+    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+
+    <label for="password">{{ 'security.login.password'|trans }}</label>
+    <input type="password" id="password" name="_password" required="required" />
+
+    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+
+    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+</form>
+#}
+<div class="login">
+    <div class="container">
+        <div class="login-grids">
+            <div class="col-md-6 log">
+                <h3>Login</h3>
+                <div class="strip"></div>
+                <p>Welcome, please enter the following to continue.</p>
+                <p>If you have previously Login with us, <a href="#">Click Here</a></p>
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    {% if csrf_token %}
+                        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    {% endif %}
+                    <h5>User Name:</h5>	
+                    {#   <input type="text" value="">#}
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
+                    <h5>Password:</h5>
+                    {#<input type="password" value=""><br>#}					
+                    <input type="password" id="password" name="_password" required="required" /><br>
+                    {#  <input type="submit" value="Login">#}
+                    <label for="remember_me">{{ 'security.login.remember_me'|trans }}</label>
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" /><br><br>
+                    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans }}" />
+
+                </form>
+                <a href="{{path("fos_user_resetting_request")}}">Forgot Password ?</a>
+            </div>
+            <div class="col-md-6 login-right">
+                <h3>New Registration</h3>
+                <div class="strip"></div>
+                <p>By creating an account with our store, you will be able to move through the checkout process faster, store multiple shipping addresses, view and track your orders in your account and more.</p>
+                <a href="{{path("fos_user_registration_register")}}" class="button">Create An Account</a>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+    </div>
+</div>

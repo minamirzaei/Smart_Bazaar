@@ -1,0 +1,39 @@
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Categoryattributes list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for categoryAttribute in categoryAttributes %}
+            <tr>
+                <td><a href="{{ path('product_categoryattribute_show', { 'id': categoryAttribute.id }) }}">{{ categoryAttribute.id }}</a></td>
+                <td>{{ categoryAttribute.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('product_categoryattribute_show', { 'id': categoryAttribute.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('product_categoryattribute_edit', { 'id': categoryAttribute.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('product_categoryattribute_new') }}">Create a new categoryAttribute</a>
+        </li>
+    </ul>
+{% endblock %}

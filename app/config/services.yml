@@ -1,0 +1,32 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/service_container.html
+parameters:
+    parameter_name: value
+
+services:
+    #service_name:
+    #    class: AppBundle\Directory\ClassName
+    #    arguments: ['@another_service_name', 'plain_value', '%parameter_name%']
+    
+    app.product.post_voter:
+        class: AppBundle\Security\Authorization\Voter\ProductVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+    app.category.post_voter:
+        class: AppBundle\Security\Authorization\Voter\CategoryVoter
+        arguments: ['@security.access.decision_manager']
+        public: false
+        tags:
+            - { name: security.voter }
+    app.products.add:
+        class: AppBundle\EventListener\ProductListener
+#        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }        
+    app.products.edit:
+        class: AppBundle\EventListener\ProductListener
+#        arguments: ['@router']
+        tags:
+            - { name: kernel.event_subscriber }        

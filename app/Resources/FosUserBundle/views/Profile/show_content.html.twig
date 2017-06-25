@@ -1,0 +1,50 @@
+
+{% trans_default_domain 'FOSUserBundle' %}
+
+{#
+<div class="fos_user_user_show">
+   {<p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
+    <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
+   </div>
+   #}
+
+
+<div class="fos_user_user_show">  
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">{{app.user.username}} Profile</th>
+            </tr>
+            <tr>
+                <th>#</th>
+                <th colspan="2">Information</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>{{ 'profile.show.username'|trans }}: {{ user.username }}</td>
+                <td>
+                    <a href="{{path("fos_user_profile_edit")}}">   <i class="material-icons button edit">edit</i></a>
+
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>{{ 'profile.show.email'|trans }}: {{ user.email }}</td>
+                <td>
+                    <a href="{{path("fos_user_profile_edit")}}"><i class="material-icons button edit">edit</i></a>
+
+                </td>
+            </tr>
+         {#   <tr>
+                <td>3</td>
+                <td>Encontrar desenvolvedor front-end</td>
+                <td>
+                    <a href="{{path("fos_user_profile_edit")}}"><i class="material-icons button edit">edit</i></a>
+
+                </td>
+            </tr>#}
+        </tbody>
+    </table>
+</div>

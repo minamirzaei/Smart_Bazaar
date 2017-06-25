@@ -1,0 +1,55 @@
+{#{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+    <h1>Categoryattribute edit</h1>
+
+    {{ form_start(edit_form) }}
+    {{ form_widget(edit_form) }}
+    <input type="submit" value="Edit" />
+    {{ form_end(edit_form) }}
+
+    <ul>
+        <li>
+            <a href="{{ path('product_categoryattribute_index') }}">Back to the list</a>
+        </li>
+        <li>
+            {{ form_start(delete_form) }}
+            <input type="submit" value="Delete">
+            {{ form_end(delete_form) }}
+        </li>
+    </ul>
+{% endblock %}
+#}
+
+{% extends 'admin/base.html.twig' %}
+
+{% block body %}
+     <h1>Categoryattribute edit</h1>
+
+    <div class="col-md-8 compose-right">
+        <div class="inbox-details-default">
+            <div class="inbox-details-heading">
+                <li>
+                 <a href="{{ path('product_categoryattribute_index') }}">Back to the list</a>
+                </li>
+            </div>
+            <div class="inbox-details-body">
+                <div class="alert alert-info">
+                    Please fill details to send a New Detail
+                </div>
+                {{ form_start(edit_form) }}
+                {{ form_widget(edit_form) }}
+                <input type="submit" value="Edit" />
+                {{ form_end(edit_form) }}
+
+                <ul>
+                    <li>
+                        {{ form_start(delete_form) }}
+                        <input type="submit" value="Delete">
+                        {{ form_end(delete_form) }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
